@@ -1,0 +1,92 @@
+
+
+
+
+<script>
+    $(document).ready(function() {
+        <!--drop down-->
+        $(".form-control").select2();
+        <!--scroll-->
+        $('.toggle-side-bar').click(function(e) {
+            $('.left-side-bar, .body-container').toggleClass('active');
+        });
+        $('.nav-main li a[data-target]').click(function(e) {
+
+            if($(window).width() < 769 && !$(this).hasClass('collapsed'))
+            {
+                $('.left-side-bar, .body-container').addClass('active');
+            }
+        });
+    });
+</script>
+
+
+<script>
+
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition,showError);
+        } else {
+           alert("Geolocation is not supported by this browser");
+        }
+    }
+
+    function showPosition(position) {
+//       alert("Latitude: " + position.coords.latitude);
+//           alert("Longitude: " + position.coords.longitude);
+
+
+           $.ajax({
+
+               type: "GET",
+               url: "{{route('user.update-location')}}",
+               data: {
+                   'latitude':position.coords.latitude,
+                   'longitude':position.coords.longitude
+               },
+
+               success: function (response, status) {
+
+                   if(response.result == 'success')
+                   {
+//                       alert(response.message);
+                   }
+                   else{
+                       alert(response.message);
+                   }
+
+               }
+
+
+           });
+    }
+
+    function showError(error) {
+        switch(error.code) {
+            case error.PERMISSION_DENIED:
+                alert("User denied the request for Geolocation");
+                break;
+            case error.POSITION_UNAVAILABLE:
+                alert("Location information is unavailable.");
+                break;
+            case error.TIMEOUT:
+                alert("The request to get user location timed out.");
+                break;
+            case error.UNKNOWN_ERROR:
+                alert("An unknown error occurred.");
+                break;
+        }
+    }
+
+</script>
+
+{{--<script async defer--}}
+        {{--src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">--}}
+{{--</script>--}}
+
+<script src="{{asset('main-admin/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('main-admin/js/select2.full.min.js')}}"></script>
+
+<script src="{{asset('main-assets/js/block_ui.min.js')}}"></script>
+

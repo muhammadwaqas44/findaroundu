@@ -1,0 +1,131 @@
+<div class="fix-header">
+    <div class="custom-container">
+        <div class="logo-main-div">
+            <a href="{{route('home')}}" class="logo-img">
+                <img src="{{asset('main-assets/images/logo.png')}}" alt="logo">
+            </a>
+        </div>
+
+        <div class="header-right-main">
+
+            <ul class="navigation-main">
+                <li>
+                    <a href="{{route('home')}}">Home</a>
+                </li>
+                <li>
+                    <a href="#">Services <i class="fas fa-caret-down"></i></a>
+                    <div class="mega-container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="border-lft">
+
+                                    <a img-address="img-{{$serviceCategoriesPopular[0]->id}}"
+                                       href="{{route('user.front-services')}}">All Services</a>
+                                    @foreach($serviceCategoriesPopular as $service)
+                                        <a img-address="img-{{$service->id}}" href="{{route('user.front-services',['category_id'=>$service->id])}}">{{$service->name}}</a>
+                                    @endforeach
+
+                                </div>
+                            </div>
+                            <div class="col-md-9 no-padding2">
+
+                                @foreach($serviceCategoriesPopular as $service)
+                                    <a href="#" id="img-{{$service->id}}" class="novis-img"><img
+                                                src="{{$service->profile_image}}" alt="imgs"></a>
+                                @endforeach
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Businesses <i class="fas fa-caret-down"></i></a>
+                    <div class="mega-container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="border-lft business">
+                                    <a href="{{route('user.front-business')}}">All Business</a>
+                                    @foreach($businessCategoriesPopular as $business)
+                                        <a href="{{route('user.front-business',['category_id'=>$business->id])}}"
+                                           img-address="img-{{$business->id}}">{{$business->name}}</a>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="col-md-9 no-padding2">
+                                @foreach($businessCategoriesPopular as $business)
+                                    <a href="#" id="img-{{$business->id}}" class="novis-img"><img
+                                                src="{{$business->profile_image}}" alt="imgs"></a>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Adds <i class="fas fa-caret-down"></i></a>
+                    <div class="mega-container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="border-lft">
+                                    <a href="{{route('user.front-adds')}}">All Adds</a>
+                                    @foreach($addCategoriesPopular as $add)
+                                        <a href="{{route('user.front-adds',['category_id'=>$add->id])}}"
+                                           img-address="img-{{$add->id}}">{{$add->name}}</a>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="col-md-9 no-padding2">
+                                @foreach($addCategoriesPopular as $add)
+                                    <a href="#" id="img-{{$add->id}}" class="novis-img"><img
+                                                src="{{$add->profile_image}}" alt="imgs"></a>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+            </ul>
+            <span class="menu"><i class="fas fa-bars"></i> Menu</span>
+
+            @if(Auth::check())
+                <span class="profile-spanns">
+                        <a class="img-profile" href="#"><img src="{{Auth::user()->profile_image}}" alt="imgs"></a>
+                        <div class="menu-drop-profile">
+                            <ul class="main-profile-ul">
+                                <li><a href="{{route('user.dashboard')}}"><i
+                                                class="fas fa-user"></i> My Account</a></li>
+                                <li><a href="#"><i class="fas fa-list-ul"></i> My Listing</a></li>
+                                <li><button class="logout-btn"><a href="{{route('logout')}}">Logout <i
+                                                    class="fas fa-sign-out-alt"></i></a></button></li>
+                            </ul>
+                        </div>
+                    </span>
+
+            @else
+                <ul class="header-right-login-btn">
+                    <li><a class="bg-pnk" href="{{route('login')}}"><i class="fas fa-user"></i>Login</a></li>
+                </ul>
+            @endif
+
+        </div>
+        </div>
+
+
+        </div>
+
+
+
+<script>
+
+
+    $(document).on('click', '.selected_category_top', function () {
+        var categoryId = $(this).attr('cat-id-top');
+        $('#category_id_top').val(categoryId);
+        $('#selected-category-text-top').html($(this).attr('cat-name-top'));
+
+    });
+</script>
+
+
+
+

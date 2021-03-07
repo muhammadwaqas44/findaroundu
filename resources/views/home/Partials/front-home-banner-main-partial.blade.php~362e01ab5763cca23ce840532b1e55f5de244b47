@@ -1,0 +1,396 @@
+<form method="get" action="{{route('user.front-services')}}">
+    <div class="banner-main">
+        <video autoplay muted loop id="myVideo">
+            <source src="{{ asset('main-assets/vedio/vedio.mp4') }}" type="video/mp4">
+        </video>
+        <div class="absolute-new-bnnr">
+            <div class="new-bg-clr">
+                <div class="container">
+                    <span class="right-services animation pulse">Connect With The Right Service Experts</span>
+                    <span class="find-busines">Find B2B & B2C business contact addresses, Phone number user ra</span>
+
+                    <ul class="nav nav-tabs padd-ultabs" role="tablist">
+
+                        <li class="nav-item selected_category" cat-id="Professionals" cat-name="Professionals">
+                            <a class="nav-link active" data-toggle="tab" href="#home">
+                                <i class="fas fa-user-tie"></i> Professionals
+                            </a>
+                        </li>
+
+                        <li class="nav-item selected_category"  cat-id="Business" cat-name="Business">
+                            <a class="nav-link" data-toggle="tab" href="#home1"><i class="fas fa-users"></i> Business</a>
+                        </li>
+
+                        <li class="nav-item selected_category" cat-id="Classified" cat-name="Adds">
+                            <a class="nav-link" data-toggle="tab" href="#home2"><i class="fab fa-buysellads"></i> Classified</a>
+                        </li>
+
+                        <li class="nav-item selected_category" cat-id="Shopping" cat-name="Shopping">
+                            <a class="nav-link" data-toggle="tab" href="#home3"><i class="fas fa-shopping-cart"></i> Shopping</a>
+                        </li>
+
+                        <li class="nav-item selected_category" cat-id="Adds" cat-name="Adds">
+                            <a class="nav-link" data-toggle="tab" href="#home4"><i class="fas fa-building"></i> Work</a>
+                        </li>
+
+                    </ul>
+
+                    <div class="banner-search-main">
+                        <div class="tab-content">
+                            <div id="home" class="tab-pane active">
+                                <div class="location-input-banner2">
+                                    <div class="select-category-drop">
+                                        <div class="cat-select">
+                                            <a href="#" style="color: #fff;"><i class="fas fa-bars"></i> I Need
+                                                <i class="fas fa-angle-down angle-dwn"></i></a>
+                                            <div class="mega-cat-main">
+                                                <div class="row">
+                                                    @foreach($data['professional'] as $professional)
+                                                        <div class="col-2">
+                                                            <span class="cat-heading">{{$professional->name}}</span>
+
+                                                            <ul class="mega-cat-ul">
+                                                                {{--{{dd($adds->childCate)}}--}}
+                                                                @foreach($professional->childCate as $childCategory)
+                                                                    <li class="selected_category" cat-id="{{ $childCategory->id }}" cat-name="{{ $childCategory->name }}">
+                                                                        <a href="javascript:void(0)">
+                                                                            <img src="{{$childCategory->icon_image}}" alt="tutor"> {{ $childCategory->name }}
+                                                                        </a>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="search" id="job_location" placeholder="Lahore, Pakistan" class="search-here">
+                                        {{--<input type="hidden" id="category_id" name="category_id" value="">--}}
+                                        <button type="submit" class="message-btn"><i class="fas fa-search"></i></button>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div id="home1" class="tab-pane fade">
+                                <div class="location-input-banner2">
+                                    <div class="select-category-drop">
+                                        <div class="cat-select">
+                                            <a href="#" style="color: #fff;"><i class="fas fa-bars"></i> I Need
+                                                <i class="fas fa-angle-down angle-dwn"></i></a>
+                                            <div class="mega-cat-main">
+                                                <div class="row">
+                                                    @foreach($data['business'] as $business)
+                                                        <div class="col-2">
+                                                            <span class="cat-heading">{{$business->name}}</span>
+
+                                                            <ul class="mega-cat-ul">
+                                                                {{--{{dd($adds->childCate)}}--}}
+                                                                @foreach($business->childCate as $childCategory)
+                                                                    <li class="selected_category" cat-id="{{ $childCategory->id }}" cat-name="{{ $childCategory->name }}">
+                                                                        <a href="javascript:void(0)">
+                                                                            <img src="{{$childCategory->icon_image}}" alt="tutor"> {{ $childCategory->name }}
+                                                                        </a>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                    @endforeach
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="search" placeholder="Search here" class="search-here">
+                                        <button type="button" class="message-btn"><i class="fas fa-search"></i></button>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div id="home2" class="tab-pane fade">
+                                <div class="location-input-banner2">
+                                    <div class="select-category-drop">
+                                        <div class="cat-select">
+                                            <a href="#" style="color: #fff;"><i class="fas fa-bars"></i> I Need
+                                                <i class="fas fa-angle-down angle-dwn"></i></a>
+                                            <div class="mega-cat-main">
+                                                <div class="row">
+                                                    @foreach($data['classified'] as $classified)
+                                                        <div class="col-2">
+                                                            <span class="cat-heading">{{$classified->name}}</span>
+
+                                                            <ul class="mega-cat-ul">
+                                                                {{--{{dd($adds->childCate)}}--}}
+                                                                @foreach($classified->childCate as $childCategory)
+                                                                    <li class="selected_category" cat-id="{{ $childCategory->id }}" cat-name="{{ $childCategory->name }}">
+                                                                        <a href="javascript:void(0)">
+                                                                            <img src="{{$childCategory->icon_image}}" alt="tutor"> {{ $childCategory->name }}
+                                                                        </a>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                    @endforeach
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="search" placeholder="Search here" class="search-here">
+                                        <button type="button" class="message-btn"><i class="fas fa-search"></i></button>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div id="home3" class="tab-pane fade">
+                                <div class="location-input-banner2">
+                                    <div class="select-category-drop">
+                                        <div class="cat-select">
+                                            <a href="#" style="color: #fff;"><i class="fas fa-bars"></i> I Need
+                                                <i class="fas fa-angle-down angle-dwn"></i></a>
+                                            <div class="mega-cat-main">
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        <span class="cat-heading">Mobiles</span>
+                                                        <ul class="mega-cat-ul">
+                                                            <li><a href="#">Tablets</a></li>
+                                                            <li><a href="#">Accessories</a></li>
+                                                            <li><a href="#">Mobile Phones</a></li>
+                                                        </ul>
+                                                        <span class="cat-heading">Vehicles</span>
+                                                        <ul class="mega-cat-ul">
+                                                            <li><a href="#">Car</a></li>
+                                                            <li><a href="#">Car Accessories</a></li>
+                                                            <li><a href="#">Spare Parts</a></li>
+                                                            <li><a href="#">Buses, Van & Trucks</a></li>
+                                                            <li><a href="#">Rikshaw & chingchi</a></li>
+                                                            <li><a href="#">Spare Parts</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <span class="cat-heading">Mobiles</span>
+                                                        <ul class="mega-cat-ul">
+                                                            <li><a href="#">Tablets</a></li>
+                                                            <li><a href="#">Accessories</a></li>
+                                                            <li><a href="#">Mobile Phones</a></li>
+                                                        </ul>
+                                                        <span class="cat-heading">Vehicles</span>
+                                                        <ul class="mega-cat-ul">
+                                                            <li><a href="#">Car</a></li>
+                                                            <li><a href="#">Car Accessories</a></li>
+                                                            <li><a href="#">Spare Parts</a></li>
+                                                            <li><a href="#">Buses, Van & Trucks</a></li>
+                                                            <li><a href="#">Rikshaw & chingchi</a></li>
+                                                            <li><a href="#">Spare Parts</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <span class="cat-heading">Mobiles</span>
+                                                        <ul class="mega-cat-ul">
+                                                            <li><a href="#">Tablets</a></li>
+                                                            <li><a href="#">Accessories</a></li>
+                                                            <li><a href="#">Mobile Phones</a></li>
+                                                        </ul>
+                                                        <span class="cat-heading">Vehicles</span>
+                                                        <ul class="mega-cat-ul">
+                                                            <li><a href="#">Car</a></li>
+                                                            <li><a href="#">Car Accessories</a></li>
+                                                            <li><a href="#">Spare Parts</a></li>
+                                                            <li><a href="#">Buses, Van & Trucks</a></li>
+                                                            <li><a href="#">Rikshaw & chingchi</a></li>
+                                                            <li><a href="#">Spare Parts</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <span class="cat-heading">Mobiles</span>
+                                                        <ul class="mega-cat-ul">
+                                                            <li><a href="#">Tablets</a></li>
+                                                            <li><a href="#">Accessories</a></li>
+                                                            <li><a href="#">Mobile Phones</a></li>
+                                                        </ul>
+                                                        <span class="cat-heading">Vehicles</span>
+                                                        <ul class="mega-cat-ul">
+                                                            <li><a href="#">Car</a></li>
+                                                            <li><a href="#">Car Accessories</a></li>
+                                                            <li><a href="#">Spare Parts</a></li>
+                                                            <li><a href="#">Buses, Van & Trucks</a></li>
+                                                            <li><a href="#">Rikshaw & chingchi</a></li>
+                                                            <li><a href="#">Spare Parts</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <span class="cat-heading">Mobiles</span>
+                                                        <ul class="mega-cat-ul">
+                                                            <li><a href="#">Tablets</a></li>
+                                                            <li><a href="#">Accessories</a></li>
+                                                            <li><a href="#">Mobile Phones</a></li>
+                                                        </ul>
+                                                        <span class="cat-heading">Vehicles</span>
+                                                        <ul class="mega-cat-ul">
+                                                            <li><a href="#">Car</a></li>
+                                                            <li><a href="#">Car Accessories</a></li>
+                                                            <li><a href="#">Spare Parts</a></li>
+                                                            <li><a href="#">Buses, Van & Trucks</a></li>
+                                                            <li><a href="#">Rikshaw & chingchi</a></li>
+                                                            <li><a href="#">Spare Parts</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <span class="cat-heading">Mobiles</span>
+                                                        <ul class="mega-cat-ul">
+                                                            <li><a href="#">Tablets</a></li>
+                                                            <li><a href="#">Accessories</a></li>
+                                                            <li><a href="#">Mobile Phones</a></li>
+                                                        </ul>
+                                                        <span class="cat-heading">Vehicles</span>
+                                                        <ul class="mega-cat-ul">
+                                                            <li><a href="#">Car</a></li>
+                                                            <li><a href="#">Car Accessories</a></li>
+                                                            <li><a href="#">Spare Parts</a></li>
+                                                            <li><a href="#">Buses, Van & Trucks</a></li>
+                                                            <li><a href="#">Rikshaw & chingchi</a></li>
+                                                            <li><a href="#">Spare Parts</a></li>
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="search" placeholder="Search here" class="search-here">
+                                        <button type="button" class="message-btn"><i class="fas fa-search"></i></button>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div id="home4" class="tab-pane fade">
+                                <div class="location-input-banner2">
+                                    <div class="select-category-drop">
+                                        <div class="cat-select">
+                                            <a href="#" style="color: #fff;"><i class="fas fa-bars"></i> I Need
+                                                <i class="fas fa-angle-down angle-dwn"></i></a>
+                                            <div class="mega-cat-main">
+                                                <div class="row">
+                                                    @foreach($data['professional'] as $professional)
+                                                        <div class="col-2">
+                                                            <span class="cat-heading">{{$professional->name}}</span>
+
+                                                            <ul class="mega-cat-ul">
+                                                                {{--{{dd($adds->childCate)}}--}}
+                                                                @foreach($professional->childCate as $childCategory)
+                                                                    <li class="selected_category" cat-id="{{ $childCategory->id }}" cat-name="{{ $childCategory->name }}">
+                                                                        <a href="javascript:void(0)">
+                                                                            <img src="{{$childCategory->icon_image}}" alt="tutor"> {{ $childCategory->name }}
+                                                                        </a>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="search" placeholder="Search here" class="search-here" id="job_location">
+                                        <button type="submit" class="message-btn"><i class="fas fa-search"></i></button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="banner-slider">
+                        <div id="owl-demo" class="owl-carousel">
+                            @foreach($data['individual_popular'] as $popular)
+                                <div class="item">
+                                    <div class="slider-hover">
+                                        <a href="{{route('user.front-services',['category_id' => $popular->id ])}}"
+                                           class="doctor-main-hover">
+                                            <span class="slider-img"><img src="{{$popular->icon_image}}"
+                                                                          alt="tutor"></span>
+                                            <span class="tutur-text">{{$popular->name}}</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+                    {{--<ul class="banner-search-main">--}}
+                        {{--<li>--}}
+                            {{--<div class="location-input-banner2">--}}
+                                {{--<div class="select-category-drop dropdown">--}}
+                                    {{--<div class="cat-select" data-toggle="dropdown">--}}
+                                        {{--<i class="fas fa-bars"></i><span id="selected-category-text">All</span>--}}
+                                    {{--</div>--}}
+                                    {{--<ul class="custom-drop dropdown-menu" id="demo">--}}
+                                        {{--<li class="selected_category" cat-id="Professionals" cat-name="Professionals"><a href="javascript:void(0)"><i class="fas fa-cog"></i>--}}
+                                                {{--Professionals--}}
+                                            {{--</a>--}}
+                                        {{--</li>--}}
+                                        {{--<li class="selected_category" cat-id="Wholesaler" cat-name="Wholesaler"><a href="javascript:void(0)"><i class="fal fa-align-center"></i>--}}
+                                                {{--Wholesaler--}}
+                                            {{--</a>--}}
+                                        {{--</li>--}}
+                                        {{--<li class="selected_category" cat-id="Suppliers" cat-name="Suppliers"><a href="javascript:void(0)"><i class="fab fa-accusoft"></i>--}}
+                                                {{--Suppliers--}}
+                                            {{--</a>--}}
+                                        {{--</li>--}}
+                                        {{--<li class="selected_category" cat-id="Products" cat-name="Products"><a href="javascript:void(0)"><i class="fab fa-product-hunt"></i>--}}
+                                                {{--Products--}}
+                                            {{--</a>--}}
+                                        {{--</li>--}}
+                                        {{--<li class="selected_category" cat-id="Adds" cat-name="Adds"><a href="javascript:void(0)"><i class="fas fa-plus-square"></i>--}}
+                                                {{--Adds--}}
+                                            {{--</a>--}}
+                                        {{--</li>--}}
+                                        {{--@foreach($data['individual_popular'] as $popular)--}}
+                                            {{--<li class="selected_category" cat-id="{{ $popular->id }}" cat-name="{{ $popular->name }}"><a href="javascript:void(0)"><img src="{{$popular->icon_image}}"--}}
+                                                                                  {{--alt="tutor"> {{ $popular->name }}</a>--}}
+                                            {{--</li>--}}
+                                        {{--@endforeach--}}
+                                    {{--</ul>--}}
+                                    {{--<input type="search" id="job_location" placeholder="Location" name="location" class="search-here">--}}
+                                    {{--<input type="hidden" id="category_id" name="category_id" value="">--}}
+                                {{--</div>--}}
+
+                                {{--<button type="submit" class="btn btn-sm btn-danger message-btn"><i--}}
+                                            {{--class="fas fa-search"></i></button>--}}
+                            {{--</div>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                    {{--<ul class="banner-search-main">--}}
+                    {{--<li>--}}
+                    {{--<div class="location-input-banner">--}}
+                    {{--<input type="search" id="job_location" placeholder="Location" class="banner-autocomplete">--}}
+                    {{--</div>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                    {{--<div class="location-input-banner2">--}}
+                    {{--<!--                       		<input type="search" id="tags2" placeholder="Select Category" class="select-category">-->--}}
+                    {{--<div class="select-category-drop" data-toggle="collapse" data-target="#demo">--}}
+                    {{--<i class="fas fa-bars"></i>--}}
+                    {{--</div>--}}
+                    {{--<ul class="custom-drop collapse" id="demo">--}}
+                    {{--@foreach($data['individual_popular'] as $popular)--}}
+                    {{--<li class="search_category"><a href="javascript:void(0)"><i class="fas fa-cog"></i> {{ $popular->` }}</a></li>--}}
+                    {{--@endforeach--}}
+
+                    {{--</ul>--}}
+                    {{--<button type="submit" class="btn btn-sm btn-danger message-btn"><i class="fas fa-search"></i></button>--}}
+                    {{--</div>--}}
+                    {{--</li>--}}
+                    {{--</ul>--}}
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+
+
+
+
+
+
+</script>
